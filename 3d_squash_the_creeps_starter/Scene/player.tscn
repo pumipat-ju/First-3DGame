@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdywbqhxmrr7a"]
+
+[ext_resource type="PackedScene" uid="uid://qeypdrwa2o7f" path="res://art/Character/Cubone.glb" id="1_kelma"]
+[ext_resource type="Script" uid="uid://du6tbio2pmae4" path="res://Scene/player.gd" id="1_y8w33"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y8w33"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y8w33"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 6
+script = ExtResource("1_y8w33")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0)
+
+[node name="Cubone" parent="Pivot" instance=ExtResource("1_kelma")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.1, 0.1, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_y8w33")
+
+[node name="MobDetector" type="Area3D" parent="."]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MobDetector"]
+shape = SubResource("CylinderShape3D_y8w33")
+
+[connection signal="body_entered" from="MobDetector" to="." method="_on_mob_detector_body_entered"]

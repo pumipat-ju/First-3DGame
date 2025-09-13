@@ -22,7 +22,8 @@ MusicPlayer="*res://Scene/music_player.tscn"
 
 [display]
 
-window/size/viewport_width=1080
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [filesystem]
 
@@ -65,3 +66,4 @@ jump={
 [rendering]
 
 anti_aliasing/quality/msaa_3d=2
+environment/defaults/default_clear_color=Color(0.231373, 0.290196, 0.168627, 1)

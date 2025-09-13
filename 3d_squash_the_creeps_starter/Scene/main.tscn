@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bryj6gk7cnmva"]
+[gd_scene load_steps=20 format=3 uid="uid://bryj6gk7cnmva"]
 
 [ext_resource type="PackedScene" uid="uid://cdywbqhxmrr7a" path="res://Scene/player.tscn" id="1_f6udf"]
 [ext_resource type="Script" uid="uid://d0n1ul4njk4us" path="res://Scene/main.gd" id="1_r34rm"]
@@ -43,6 +43,9 @@ default_font_size = 27
 font = ExtResource("10_3pt4j")
 font_size = 27
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_3pt4j"]
+ambient_light_color = Color(0, 0, 0, 0)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_r34rm")
@@ -102,6 +105,7 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, -28, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 shadow_enabled = true
+sky_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_f6udf")]
 
@@ -112,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026876, 0.395083, 18.9734)
 keep_aspect = 0
 projection = 1
-size = 25.0
+size = 30.0
 far = 100.0
 
 [node name="Cylinders" type="Node3D" parent="."]
@@ -151,14 +155,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = SubResource("Theme_ow1sv")
 
-[node name="ScoreLabel" type="Label" parent="UserInterface"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = " Score: 0"
-script = ExtResource("5_1xcnr")
-
 [node name="Retry" type="ColorRect" parent="UserInterface"]
 layout_mode = 1
 anchors_preset = 15
@@ -167,24 +163,27 @@ anchor_bottom = 1.0
 offset_right = 53.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(20.6524, 27.0548)
 color = Color(0, 0, 0, 0.376471)
 
-[node name="Label" type="Label" parent="UserInterface/Retry"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 400.5
-offset_top = 253.0
-offset_right = 619.5
-offset_bottom = 281.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Press Enter to retry."
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label2" type="Label" parent="UserInterface/Retry"]
+layout_mode = 0
+offset_left = 45.0795
+offset_top = 14.2674
+offset_right = 312.079
+offset_bottom = 50.2674
+scale = Vector2(0.05, 0.05)
+theme = SubResource("Theme_7y4ci")
+text = "Press Enter to retry"
+label_settings = SubResource("LabelSettings_mxd2g")
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = " Score: 0"
+script = ExtResource("5_1xcnr")
 
 [node name="Label" type="Label" parent="UserInterface"]
 layout_mode = 0
@@ -195,6 +194,9 @@ offset_bottom = 34.0
 theme = SubResource("Theme_7y4ci")
 text = "663380290-8 ภูมิพัฒน์ จำเริญเนาว์"
 label_settings = SubResource("LabelSettings_mxd2g")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3pt4j")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

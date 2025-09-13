@@ -4,7 +4,7 @@ signal hit
 
 @export var speed: float = 14
 @export var fall_acceleration: float = 75   # m/s^2
-@export var jump_impulse: float = 30       # m/s
+@export var jump_impulse: float = 25      # m/s
 @export var bounce_impulse: float = 16      # m/s
 
 var target_velocity: Vector3 = Vector3.ZERO

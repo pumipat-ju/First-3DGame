@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bryj6gk7cnmva"]
+[gd_scene load_steps=16 format=3 uid="uid://bryj6gk7cnmva"]
 
 [ext_resource type="PackedScene" uid="uid://cdywbqhxmrr7a" path="res://Scene/player.tscn" id="1_f6udf"]
 [ext_resource type="Script" uid="uid://d0n1ul4njk4us" path="res://Scene/main.gd" id="1_r34rm"]
 [ext_resource type="PackedScene" uid="uid://b2q5f8pv67fut" path="res://Scene/mob.tscn" id="2_2wwxx"]
+[ext_resource type="PackedScene" uid="uid://jt8nvohun44m" path="res://art/Small Camping Bundle-glb/Tree.glb" id="3_75buv"]
 [ext_resource type="FontFile" uid="uid://cyxhh7ddkn62q" path="res://fonts/Montserrat-Medium.ttf" id="4_3amdw"]
+[ext_resource type="PackedScene" uid="uid://dtdsmksocrvkl" path="res://art/Small Camping Bundle-glb/Log.glb" id="4_c2iwn"]
 [ext_resource type="Script" uid="uid://c56007u07qygc" path="res://Scene/score_label.gd" id="5_1xcnr"]
+[ext_resource type="PackedScene" uid="uid://b27eeutpvoqr2" path="res://art/Small Camping Bundle-glb/Rock.glb" id="5_3pt4j"]
+[ext_resource type="PackedScene" uid="uid://dl74cn8iqa02s" path="res://art/Small Camping Bundle-glb/Island.glb" id="6_c2iwn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rlixt"]
 size = Vector3(60, 2, 60)
@@ -46,7 +50,47 @@ shape = SubResource("BoxShape3D_rlixt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_f6udf")
 
+[node name="Tree" parent="Ground" instance=ExtResource("3_75buv")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 2.5, 10)
+
+[node name="Tree2" parent="Ground" instance=ExtResource("3_75buv")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 2.5, 10)
+
+[node name="Tree3" parent="Ground" instance=ExtResource("3_75buv")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10, 2.5, -10)
+
+[node name="Tree4" parent="Ground" instance=ExtResource("3_75buv")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 2.5, -10)
+
+[node name="Log" parent="Ground" instance=ExtResource("4_c2iwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
+
+[node name="Log2" parent="Ground" instance=ExtResource("4_c2iwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+
+[node name="Log3" parent="Ground" instance=ExtResource("4_c2iwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10)
+
+[node name="Log4" parent="Ground" instance=ExtResource("4_c2iwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
+
+[node name="Rock" parent="Ground" instance=ExtResource("5_3pt4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.25, 9)
+
+[node name="Rock2" parent="Ground" instance=ExtResource("5_3pt4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.25, 9)
+
+[node name="Rock3" parent="Ground" instance=ExtResource("5_3pt4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.25, -9)
+
+[node name="Rock4" parent="Ground" instance=ExtResource("5_3pt4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.25, -9)
+
+[node name="Island" parent="Ground" instance=ExtResource("6_c2iwn")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, -28, 0)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_f6udf")]
@@ -55,10 +99,10 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026876, 0.395083, 18.9734)
 keep_aspect = 0
 projection = 1
-size = 19.0
+size = 25.0
 far = 100.0
 
 [node name="Cylinders" type="Node3D" parent="."]
@@ -102,7 +146,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Score: 0"
+text = " Score: 0"
 script = ExtResource("5_1xcnr")
 
 [node name="Retry" type="ColorRect" parent="UserInterface"]
@@ -122,9 +166,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 194.5
+offset_left = 400.5
 offset_top = 253.0
-offset_right = 413.5
+offset_right = 619.5
 offset_bottom = 281.0
 grow_horizontal = 2
 grow_vertical = 2

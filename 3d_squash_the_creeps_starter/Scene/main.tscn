@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bryj6gk7cnmva"]
+[gd_scene load_steps=19 format=3 uid="uid://bryj6gk7cnmva"]
 
 [ext_resource type="PackedScene" uid="uid://cdywbqhxmrr7a" path="res://Scene/player.tscn" id="1_f6udf"]
 [ext_resource type="Script" uid="uid://d0n1ul4njk4us" path="res://Scene/main.gd" id="1_r34rm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c56007u07qygc" path="res://Scene/score_label.gd" id="5_1xcnr"]
 [ext_resource type="PackedScene" uid="uid://b27eeutpvoqr2" path="res://art/Small Camping Bundle-glb/Rock.glb" id="5_3pt4j"]
 [ext_resource type="PackedScene" uid="uid://dl74cn8iqa02s" path="res://art/Small Camping Bundle-glb/Island.glb" id="6_c2iwn"]
+[ext_resource type="FontFile" uid="uid://buq6vhqmtu27j" path="res://fonts/THSarabunNew/THSarabunNew Bold.ttf" id="10_3pt4j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rlixt"]
 size = Vector3(60, 2, 60)
@@ -33,6 +34,15 @@ point_count = 4
 [sub_resource type="Theme" id="Theme_ow1sv"]
 default_font = ExtResource("4_3amdw")
 default_font_size = 22
+
+[sub_resource type="Theme" id="Theme_7y4ci"]
+default_font = ExtResource("10_3pt4j")
+default_font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxd2g"]
+font = ExtResource("10_3pt4j")
+font_size = 27
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_r34rm")
@@ -175,6 +185,16 @@ grow_vertical = 2
 text = "Press Enter to retry."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = -2.0
+offset_right = 409.0
+offset_bottom = 34.0
+theme = SubResource("Theme_7y4ci")
+text = "663380290-8 ภูมิพัฒน์ จำเริญเนาว์"
+label_settings = SubResource("LabelSettings_mxd2g")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

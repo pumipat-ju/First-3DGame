@@ -1,0 +1,4 @@
+res://Scene/main.tscn
+res://Scene/player.tscn
+res://Scene/mob.tscn
+res://Scene/score_label.gd
